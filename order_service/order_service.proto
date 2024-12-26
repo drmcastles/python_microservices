@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package order;
+
+service OrderService {
+    rpc CreateOrder (OrderRequest) returns (OrderResponse);
+    rpc GetOrder (GetOrderRequest) returns (OrderResponse);
+}
+
+message OrderRequest {
+    string user_id = 1;
+    repeated string product_ids = 2; // Поле product_ids должно быть типа repeated
+}
+
+message OrderResponse {
+    string order_id = 1;
+    string user_id = 2;
+    repeated string product_ids = 3;
+}
+
+message GetOrderRequest {
+    string order_id = 1;
+}
